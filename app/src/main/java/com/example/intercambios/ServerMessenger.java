@@ -92,6 +92,7 @@ public class ServerMessenger {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
                     Socket client_socket = server_socket.accept();
+                    client_socket.setSoTimeout(2000);
                     Thread clientThread = new Thread(new ClientHandler(client_socket));
                     clientThread.start();
                 }
